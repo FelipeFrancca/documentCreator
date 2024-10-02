@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Editor de Texto - Avançado</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  <header>
+    <div class="header-left">
+      <h2>Documento sem nome</h2>
+    </div>
+    <div class="header-right">
+      <button class="btn-share">Compartilhar</button>
+    </div>
+  </header>
+
+  <div class="toolbar">
+    <!-- Ferramentas de Formatação -->
+    <select onchange="execCmd('fontName', this.value)">
+      <option value="Arial">Arial</option>
+      <option value="Times New Roman">Times New Roman</option>
+      <option value="Courier New">Courier New</option>
+      <option value="Verdana">Verdana</option>
+    </select>
+    <select onchange="execCmd('fontSize', this.value)">
+      <option value="1">10px</option>
+      <option value="2">13px</option>
+      <option value="3">16px</option>
+      <option value="4">18px</option>
+      <option value="5">24px</option>
+      <option value="6">32px</option>
+      <option value="7">48px</option>
+    </select>
+    <button onclick="execCmd('bold')"><i class="fas fa-bold"></i></button>
+    <button onclick="execCmd('italic')"><i class="fas fa-italic"></i></button>
+    <button onclick="execCmd('underline')"><i class="fas fa-underline"></i></button>
+    <button onclick="execCmd('strikeThrough')"><i class="fas fa-strikethrough"></i></button>
+    <button onclick="execCmd('justifyLeft')"><i class="fas fa-align-left"></i></button>
+    <button onclick="execCmd('justifyCenter')"><i class="fas fa-align-center"></i></button>
+    <button onclick="execCmd('justifyRight')"><i class="fas fa-align-right"></i></button>
+    <button onclick="execCmd('justifyFull')"><i class="fas fa-align-justify"></i></button>
+    <button onclick="execCmd('insertUnorderedList')"><i class="fas fa-list-ul"></i></button>
+    <button onclick="execCmd('insertOrderedList')"><i class="fas fa-list-ol"></i></button>
+    <button onclick="execCmd('insertImage', prompt('Insira o URL da imagem:'))"><i class="fas fa-image"></i></button>
+    <button onclick="execCmd('createLink', prompt('Insira o URL:'))"><i class="fas fa-link"></i></button>
+    <button onclick="execCmd('unlink')"><i class="fas fa-unlink"></i></button>
+    <button onclick="execCmd('insertHorizontalRule')"><i class="fas fa-minus"></i></button>
+    <input type="color" onchange="execCmd('foreColor', this.value)">
+    <input type="color" onchange="execCmd('backColor', this.value)">
+    <button onclick="generateLorem()"><i class="fas fa-file-alt"></i> Gerar Lorem</button>
+    <button onclick="saveDocument()"><i class="fas fa-save"></i> Salvar Documento</button>
+  </div>
+
+  <div class="ruler-wrapper">
+    <div class="ruler-y">
+    </div>
+    <div class="editor-container">
+      <div class="ruler-x">
+      </div>
+
+      <div id="editor-wrapper">
+        <div class="editor" contenteditable="true">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
